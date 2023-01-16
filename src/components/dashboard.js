@@ -1,21 +1,22 @@
-import React,{userContext}from'react'
-import {Redirect}from 'react-router-dom'
+import React, { userContext } from 'react'
+import { redirect } from 'react-router-dom'
 import { AuthContext } from './Auth'
-import firebaseConfig from '../firebase'
+import { signOut, getAuth } from "firebase/auth";
 
-const dashboard = () =>{
-    const {currentUser} = userContext(AuthContext);
+const dashboard = () => {
+    const auth = getAuth()
+    const { currentUser } = userContext(AuthContext);
 
-    if(!currentUser){
-        return <Redirect to="/login"/>;
+    if (!currentUser) {
+        return redirect("/login");
     }
 
-    return(
+    return (
         <div>
-         <div className="container mt-5"></div>
-         <h1>Welcome</h1>
-         <p>this is the dashboard, if you can see this you're logged in.</p>
-         <button onClick={()=> firebaseConfig.auth().signOut()}class="btn btn-danger">Sign out</button>
+            <div className="container mt-5"></div>
+            <h1>Welcome</h1>
+            <p>this is the dashboard, if you can see this you're logged in.</p>
+            <button onClick={() => signOut(auth)} class="btn btn-danger">Sign out</button>
         </div>
     )
 }

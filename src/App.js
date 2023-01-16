@@ -1,29 +1,23 @@
 import React from 'react';
-import{BrowserRouter as Router,Route,Switch } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './components/home'
-import dashboard from './components/dashboard'
-import login from './components/login'
-import signup from './components/signup'
+import Dashboard from './components/dashboard'
+import Login from './components/login'
+import Signup from './components/signup'
 import { AuthProvider } from './components/Auth';
-
-
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/dashboard" component={dashboard}/>
-          <Route exact path="/login" component={login}/>
-          <Route exact path="/signuo" component={signup}/>
-
-        </Switch>
-      </Router>
-
-
+      <div className="container mt-5">
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
+      </Routes>
+      </div>
     </AuthProvider>
   )
 }

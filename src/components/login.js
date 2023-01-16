@@ -1,24 +1,28 @@
 import React, { userContext } from "react";
-import { Redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { AuthContext } from "./Auth";
-import firebaseConfig from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
-const LogIn = () => {
-  const handleSubmit = (e) => {e.preventDefault();
+const Login = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const { email, password } = e.target.element;
+    const { email, password } = e.target.element;
 
-  try {
-    firebaseConfig
-      .auth()
-      .signInwithEmailAndPassword(email.value, password.value);
-  } catch (error) {
-    alert(error);
-  }}
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email.value, password.value);
+      const user = userCredential.user
+      console.log(user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  const { currentUser } = userContext(AuthContext);
+  const currentUser = userContext(AuthContext);
+  
   if (currentUser) {
-    return <Redirect to="/dashboard/" />;
+    return redirect("/dashboard/")
   }
 
   return (
@@ -60,4 +64,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default Login;
