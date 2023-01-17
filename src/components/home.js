@@ -8,7 +8,6 @@ const Home = () => {
     return (
         <>
             <h1>Home</h1>
-            <p>{currentUser}</p>
             {currentUser ? (
                 <p>You are logged in - <Link to="/dashboard">View Dashboard</Link></p>
             ) : (

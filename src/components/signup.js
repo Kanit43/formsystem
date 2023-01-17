@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { redirect } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
 import { useForm } from "react-hook-form";
@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 const Signup = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const { register, handleSubmit } = useForm();
+  const location = useLocation()
 
   const onSubmit = async (data) => {
     console.log(data)
@@ -19,23 +20,8 @@ const Signup = () => {
     }
   }
 
-  // const handleSubmit = async (e) => {
-
-  //   e.preventDefault();
-  //   const { email, password } = e.target.element;
-
-  //   try {
-  //     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
-  //     console.log(userCredential)
-  //     setcurrentUser(userCredential.user);
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-
-  // }
-
   if (currentUser) {
-    return redirect("/dashboard/")
+    return <Navigate to="/dashboard" state={{ from: location }} replace />
   }
 
   return (
@@ -51,6 +37,11 @@ const Signup = () => {
         <div className="mb-3">
           <label htmlFor="regisPassword" className="form-label">Password</label>
           <input type="password" name="password" className="form-control" id="regisPassword" {...register("password")} />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="regisStudentId" className="form-label">Student ID</label>
+          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("studentId")} />
         </div>
 
         <button type='submit' className="btn btn-primary">Submit</button>
