@@ -1,23 +1,25 @@
-import React,{userContext}from'react'
-import {Redirect}from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
 import { AuthContext } from './Auth'
-import firebaseConfig from '../firebase'
+import { signOut } from "firebase/auth";
+import { auth } from '../firebase';
 
-const dashboard = () =>{
-    const {currentUser} = userContext(AuthContext);
+const Dashboard = () => {
+    const currentUser = useContext(AuthContext);
+    const location = useLocation()
 
-    if(!currentUser){
-        return <Redirect to="/login"/>;
+    if (!currentUser) {
+        return <Navigate to="/login" state={{ from: location }} replace />
     }
 
-    return(
+    return (
         <div>
-         <div className="container mt-5"></div>
-         <h1>Welcome</h1>
-         <p>this is the dashboard, if you can see this you're logged in.</p>
-         <button onClick={()=> firebaseConfig.auth().signOut()}class="btn btn-danger">Sign out</button>
+            <div className="container mt-5"></div>
+            <h1>Welcome</h1>
+            <p>this is the dashboard, if you can see this you're logged in.</p>
+            <button onClick={() => signOut(auth)} className="btn btn-danger">Sign out</button>
         </div>
     )
 }
 
-export default dashboard;
+export default Dashboard;
