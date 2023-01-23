@@ -7,6 +7,7 @@ import Signup from './components/signup'
 import { AuthProvider } from './components/Auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function App() {
   return (
     <AuthProvider>
@@ -16,10 +17,15 @@ function App() {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        
       </Routes>
+      
       </div>
+
     </AuthProvider>
+    
   )
 }
+
 
 export default App;
