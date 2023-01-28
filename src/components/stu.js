@@ -23,6 +23,12 @@ const Stu =()=> {
               <li className="list-group-item">
                 <a href="/">แก้ไขข้อมูลผู้ใช้</a>
               </li>
+              <li className="list-group-item">
+                <a href="/">ทำแบบฟอร์ม</a>
+              </li>
+              <li className="list-group-item">
+                <a href="/">ประวัติการทำรายการ</a>
+              </li>
              
             </ul>
           </nav>

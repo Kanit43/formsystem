@@ -18,7 +18,7 @@ const Admin =()=> {
           <nav>
             <ul className="list-group">
               <li className="list-group-item">
-                <a href="/">แก้ไขข้อมูลผู้ใช้</a>
+                <a href="/">แก้ไขข้อมูลผู้ใช้ นักเรียน และ เจ้าหน้าที่</a>
               </li>
               
             </ul>

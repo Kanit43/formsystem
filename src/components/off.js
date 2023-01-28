@@ -19,6 +19,10 @@ const Off =()=> {
             <ul className="list-group">
               <li className="list-group-item">
                 <a href="/">แก้ไขข้อมูลผู้ใช้</a>
+                <li className="list-group-item">
+                <a href="/">ตรวจสอบการทำรายการของนักศึกษา</a>
+                </li>
+                
               </li>
               
             </ul>
