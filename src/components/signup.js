@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { useForm } from "react-hook-form";
+import { doc, setDoc } from 'firebase/firestore';
 
 const Signup = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -15,6 +16,9 @@ const Signup = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       console.log(userCredential)
       setCurrentUser(userCredential.user);
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        studentId: data.studentId
+      })
     } catch (error) {
       console.log(error)
     }
