@@ -1,14 +1,17 @@
 import React from 'react';
 
+if (!currentUser) {
+    return <Navigate to="/login" state={{ from: location }} replace />
+}
 
-const Admin =()=> {
+const Stu =()=> {
   return (
     
       <div className="container">
 
       <div className="row">
         <h1 className="mt-3">
-          Welcome To admin Page
+          Welcome Student
         </h1>
         <hr className="mb=3"></hr>
       </div>
@@ -20,10 +23,20 @@ const Admin =()=> {
               <li className="list-group-item">
                 <a href="/">แก้ไขข้อมูลผู้ใช้</a>
               </li>
-              
+             
             </ul>
           </nav>
         </div>
+
+        <div>
+        <div className="container mt-5"></div>
+        <h1>Welcome</h1>
+        <p>this is the dashboard, if you can see this you're logged in.</p>
+        <div><Link to="/profile">Profile</Link> </div>
+        <button onClick={() => signOut(auth)} className="btn btn-danger">Sign out</button>
+    
+    </div>
+        
 
         <div className="col-md-10">
 
@@ -36,4 +49,4 @@ const Admin =()=> {
   )
 }
 
-export default Admin;
+export default Stu;

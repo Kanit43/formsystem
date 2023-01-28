@@ -4,6 +4,7 @@ import Home from './components/home'
 import Dashboard from './components/dashboard'
 import Login from './components/login'
 import Signup from './components/signup'
+import Profile from './components/profile';
 import { AuthProvider } from './components/Auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path='/profile' element={<Profile/>}/>
         
       </Routes>
       

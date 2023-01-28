@@ -20,12 +20,6 @@ const Officer =()=> {
               <li className="list-group-item">
                 <a href="/">แก้ไขข้อมูลผู้ใช้</a>
               </li>
-              <li className="list-group-item">
-                <a href="/movies">แก้ไขรหัสผ่านผู้ใช้</a>
-              </li>
-              <li className="list-group-item">
-                <a href="/admin">แก้ไขชื่อผู้ใช้</a>
-              </li>
             </ul>
           </nav>
         </div>

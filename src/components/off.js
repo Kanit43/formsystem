@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-const Admin =()=> {
+const Off =()=> {
   return (
     
       <div className="container">
 
       <div className="row">
         <h1 className="mt-3">
-          Welcome To admin Page
+          Welcome Officer
         </h1>
         <hr className="mb=3"></hr>
       </div>
@@ -36,4 +36,4 @@ const Admin =()=> {
   )
 }
 
-export default Admin;
+export default Off;
