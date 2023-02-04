@@ -1,5 +1,5 @@
 import React from 'react';
-import Pdf from "react-to-pdf";
+
 
 const ref = React.createRef();
 
@@ -11,9 +11,9 @@ const PDF = (props) => {
         <img src={props.image} alt={props.title} />
         <p>{props.content}</p>
       </div>
-      <Pdf targetRef={ref} filename="post.pdf">
+      <PDF targetRef={ref} filename="Post.js">
         {({ toPdf }) => <button onClick={toPdf}>Capture as PDF</button>}
-      </Pdf>
+      </PDF>
     </>
   );
 }

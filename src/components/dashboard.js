@@ -19,6 +19,9 @@ const Dashboard = () => {
             <h1>Welcome</h1>
             <p>this is the dashboard, if you can see this you're logged in.</p>
             <div><Link to="/profile">Profile</Link> </div>
+            <p>
+                    <Link to="/post">post</Link> 
+                </p>
             <button onClick={() => signOut(auth)} className="btn btn-danger">Sign out</button>
         </div>
     )

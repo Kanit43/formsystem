@@ -21,10 +21,10 @@ const Student =()=> {
                 <a href="/">แก้ไขข้อมูลผู้ใช้</a>
               </li>
               <li className="list-group-item">
-                <a href="/movies">แก้ไขรหัสผ่านผู้ใช้</a>
+                <a href="/movies">แบบฟอร์ม</a>
               </li>
               <li className="list-group-item">
-                <a href="/admin">แก้ไขชื่อผู้ใช้</a>
+                <a href="/admin">ประวัติทำรายการ</a>
               </li>
             </ul>
           </nav>
