@@ -3,6 +3,7 @@ import { Navigate, useLocation,Link } from 'react-router-dom'
 import { AuthContext } from './Auth'
 import { signOut } from "firebase/auth";
 import { auth } from '../firebase';
+import Modifydoc from './modifydoc';
 
 
 const Dashboard = () => {
@@ -20,10 +21,13 @@ const Dashboard = () => {
             <p>this is the dashboard, if you can see this you're logged in.</p>
             <div><Link to="/profile">Profile</Link> </div>
             <p>
-                    <Link to="/post">post</Link> 
+                    <Link to="/pdf">pdf</Link> 
                 </p>
             <button onClick={() => signOut(auth)} className="btn btn-danger">Sign out</button>
+
+            <button onClick={() => Modifydoc()} className="btn btn-danger">test pdf</button>
         </div>
+        
     )
 }
 
