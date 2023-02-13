@@ -1,6 +1,6 @@
 import React from "react";
 
-const File2 = () => {
+const Form2 = () => {
   return (
     <div className="container">
       <div className="row">
@@ -76,4 +76,4 @@ const File2 = () => {
   );
 };
 
-export default File2;
+export default Form2;

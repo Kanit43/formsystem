@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-const Form1 = () => {
+const Form5 = () => {
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mt-3">แบบฟอร์มคำร้องทั่วไป</h1>
+        <h1 className="mt-3">ใบคำร้องขอเปลี่ยนค่าใช้จ่าย</h1>
         <hr className="mb=3"></hr>
       </div>
       <form>
@@ -15,10 +15,7 @@ const Form1 = () => {
             <input type="date" name="date" className="form-control" />
           </div>
 
-          <div className=" col-12">
-            <label className=" form-label">เรื่อง: </label>
-            <input type="text" name="header" className="form-control" />
-          </div>
+    
 
          <div className=" col-12">
             <label className=" form-label">คำนำหน้า: </label>
@@ -34,19 +31,16 @@ const Form1 = () => {
             <input type="text" name="idcard" className="form-control" />
           </div>
           <div className=" col-12">
-            <label className=" form-label">ระดับ:</label>
+            <label className=" form-label">ระดับปริญญาตรีสาขา:</label>
             <input type="text" name="level" className="form-control" />
           </div>
           <div className=" col-12">
-            <label className=" form-label">โปรแกรมวิชา:</label>
-            <input type="text" name="major" className="form-control" />
+            <label className=" form-label">คณะ:</label>
+            <input type="text" name="group" className="form-control" />
           </div>
+        
           <div className=" col-12">
-            <label className=" form-label">ห้อง:</label>
-            <input type="text" name="class" className="form-control" />
-          </div>
-          <div className=" col-12">
-            <label className=" form-label">ความประสงค์:</label>
+            <label className=" form-label">ใบเสร็จเลขที่:</label>
             <input type="text" name="wish" className="form-control" />
           </div>
           
@@ -67,4 +61,4 @@ const Form1 = () => {
   );
 };
 
-export default Form1;
+export default Form5;

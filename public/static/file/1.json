@@ -1,0 +1,25 @@
+{
+  "filename": "test.pdf",
+  "pages": [
+    {
+      "page": 0,
+      "boxes": [
+        {
+          "key": "date",
+          "x": 5,
+          "y": 200
+        },
+        {
+          "key": "subject",
+          "x": 5,
+          "y": 200
+        },
+        {
+          "key": "prefix",
+          "x": 5,
+          "y": 200
+        }
+      ]
+    }
+  ]
+}

@@ -1,36 +1,27 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom'
-import Home from './components/home'
-import Dashboard from './components/dashboard'
-import Login from './components/login'
-import Signup from './components/signup'
-import Profile from './components/profile';
-import { AuthProvider } from './components/Auth';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "./components/dashboard";
+import Login from "./components/login";
+import Signup from "./components/signup";
+import Profile from "./components/profile";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { PrivatedRoute } from "./context/PrivatedRoute";
+import { FormRoute } from "./feature/form/form";
 
 function App() {
   return (
-    <AuthProvider>
-      <div className="container mt-5">
+    <div className="container mt-3">
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path='/profile' element={<Profile/>}/>
-       
-        
-
-        
+        <Route element={<PrivatedRoute />}>
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/form/:id" element={<FormRoute />} />
+        </Route>
       </Routes>
-      
-      </div>
-
-    </AuthProvider>
-    
-  )
+    </div>
+  );
 }
-
 
 export default App;
