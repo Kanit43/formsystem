@@ -1,62 +1,75 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import modifyDoc from "../services/modify-doc";
+
 
 const Form2 = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      modifyDoc(2, data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="row">
         <h1 className="mt-3">แบบฟอร์มคำร้องทั่วไป</h1>
         <hr className="mb=3"></hr>
       </div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className=" row g-3">
         <div className=" col-12">
             <label className=" form-label">เขียนที่: </label>
-            <input type="date" name="date" className="form-control" />
+            <input type="text" name="where" className="form-control" {...register("where")} />
           </div>
 
         <div className=" col-12">
             <label className=" form-label">วันที่: </label>
-            <input type="date" name="date" className="form-control" />
+            <input type="date" name="date" className="form-control" {...register("date")}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">เรื่อง: </label>
-            <input type="text" name="header" className="form-control" />
+            <input type="text" name="header" className="form-control" {...register("header")}/>
           </div>
 
          <div className=" col-12">
             <label className=" form-label">คำนำหน้า: </label>
-            <input type="text" name="title" className="form-control" />
+            <input type="text" name="title" className="form-control" {...register("title")}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">ชื่อและนามสกุล: </label>
-            <input type="text" name="name" className="form-control" />
+            <input type="text" name="name" className="form-control" {...register("name")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">หรัสนักศึกษา:</label>
-            <input type="text" name="idcard" className="form-control" />
+            <input type="text" name="idcard" className="form-control" {...register("idcard")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">สาขาวิชา:</label>
-            <input type="text" name="major" className="form-control" />
+            <input type="text" name="major" className="form-control" {...register("major")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ชั้นปีที่:</label>
-            <input type="text" name="year class" className="form-control" />
+            <input type="text" name="yearclass" className="form-control" {...register("yearclass")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ระดับ:</label>
-            <input type="text" name="level" className="form-control" />
+            <input type="text" name="level" className="form-control" {...register("level")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ความประสงค์:</label>
-            <input type="text" name="wish" className="form-control" />
+            <input type="text" name="wish" className="form-control" {...register("wish")}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">เบอร์โทร:</label>
-            <input type="text" name="number" className="form-control" />
+            <input type="text" name="number" className="form-control" {...register("number")}/>
           </div>
           
         </div>

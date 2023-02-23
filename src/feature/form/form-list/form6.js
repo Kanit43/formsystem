@@ -1,62 +1,72 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { useForm } from "react-hook-form";
+import modifyDoc from "../services/modify-doc";
 
 const Form6 = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      modifyDoc(6, data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mt-3">ใบคำร้องขอเปลี่ยนค่าใช้จ่าย</h1>
+        <h1 className="mt-3">คำร้องขอเปิดรายวิชา</h1>
         <hr className="mb=3"></hr>
       </div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className=" row g-3">
         <div className=" col-12">
             <label className=" form-label">วันที่: </label>
-            <input type="date" name="date" className="form-control" />
+            <input type="date" name="date" className="form-control" {...register("date")}/>
           </div>
 
     
 
          <div className=" col-12">
             <label className=" form-label">คำนำหน้า: </label>
-            <input type="text" name="title" className="form-control" />
+            <input type="text" name="title" className="form-control" {...register("title")}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">ชื่อและนามสกุล: </label>
-            <input type="text" name="name" className="form-control" />
+            <input type="text" name="name" className="form-control" {...register("name")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">หรัสนักศึกษา:</label>
-            <input type="text" name="idcard" className="form-control" />
+            <input type="text" name="idcard" className="form-control" {...register("idcard")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ระดับ:</label>
-            <input type="text" name="level" className="form-control" />
+            <input type="text" name="level" className="form-control" {...register("level")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">โปรแกรมวิชา:</label>
-            <input type="text" name="group" className="form-control" />
+            <input type="text" name="group" className="form-control" {...register("group")}/>
           </div>
         
           <div className=" col-12">
             <label className=" form-label">กลุ่มเรียน:</label>
-            <input type="text" name="groupstudy" className="form-control" />
+            <input type="text" name="groupstudy" className="form-control" {...register("groupstudy")}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">ภาคการศึกษาที่:</label>
-            <input type="text" name="term" className="form-control" />
+            <input type="text" name="term" className="form-control" {...register("term")}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">ปีการศึกษา:</label>
-            <input type="text" name="pt" className="form-control" />
+            <input type="text" name="pt" className="form-control" {...register("pt")}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">เนื่องจาก:</label>
-            <input type="text" name="other" className="form-control" />
+            <input type="text" name="other" className="form-control" {...register("other")}/>
           </div>
           
         </div>
