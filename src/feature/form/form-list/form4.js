@@ -65,26 +65,60 @@ const Form4 = () => {
             <label className=" form-label">ค่าบำรุงการศึกษาเหมาจ่าย จำนวน:</label>
             <input type="text" name="educationfee" className="form-control" {...register("educationfee")}/>
           </div>
+          <h2 className="mt-3">อื่นๆ ระบุ</h2>
           <div className=" col-12">
-            <label className=" form-label">อื่นๆ:</label>
+            <label className=" form-label">1:</label>
             <input type="text" name="other" className="form-control" {...register("other")}/>
           </div>
           <div className=" col-12">
-            <label className=" form-label">รวมทั้งสิ้น:</label>
+            <label className=" form-label">จำนวน:</label>
+            <input type="text" name="unit" className="form-control" {...register("unit")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">2:</label>
+            <input type="text" name="other1" className="form-control" {...register("other1")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">จำนวน:</label>
+            <input type="text" name="unit1" className="form-control" {...register("unit1")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">รวมเป็นเงินทั้งสิ้น:</label>
             <input type="text" name="average" className="form-control" {...register("average")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">จะชำระภายในวันที่:</label>
-            <input type="text" name="average1" className="form-control" {...register("average1")}/>
-          </div>
-          <div className=" col-12">
-            <label className=" form-label">ลงนาม:</label>
-            <input type="text" name="name2" className="form-control" {...register("name2")}/>
+            <input type="text" name="month" className="form-control" {...register("month")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">เบอร์:</label>
             <input type="text" name="number2" className="form-control" {...register("number2")}/>
           </div>
+          <div className=" col-12">
+            <label className=" form-label">ชื่อผู้ปกครอง:</label>
+            <input type="text" name="parent" className="form-control" {...register("parent")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">อยู่บ้านเลขที่:</label>
+            <input type="text" name="address" className="form-control" {...register("address")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">ชื่อนักศึกษา:</label>
+            <input type="text" name="student" className="form-control" {...register("student")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">เกี่ยวข้องเป็น:</label>
+            <input type="text" name="parent1" className="form-control" {...register("parent1")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">เบอร์ผู้ปกครอง:</label>
+            <input type="text" name="nump" className="form-control" {...register("nump")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">วันที่:</label>
+            <input type="text" name="date1" className="form-control" {...register("date1")}/>
+          </div>
+
 
           
           

@@ -106,9 +106,17 @@ const Form3 = () => {
             <label className=" form-label">เนื่องจาก:</label>
             <input type="text" name="notic" className="form-control" {...register("notic")}/>
           </div>
-          
+          <h2 className="mt-3">สำหรับติดต่อนักศึกษา</h2>
         </div>
         <div>
+        <div className=" col-12">
+            <label className=" form-label">เบอร์โทรศัพ:</label>
+            <input type="text" name="number1" className="form-control" {...register("number1")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">Email:</label>
+            <input type="text" name="email" className="form-control" {...register("email")}/>
+          </div>
        
       </div>
         <button type="submit" name="enter" className="btn btn-primary mt-3">

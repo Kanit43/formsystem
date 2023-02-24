@@ -72,19 +72,40 @@ const Form8 = () => {
             <label className=" form-label">โดยขออนุญาตให้:</label>
             <input type="text" name="teacher" className="form-control" {...register("teacher")}/>
           </div>
+          <h2 className="mt-3">คาบทฤษฎี</h2>
           <div className=" col-12">
-            <label className=" form-label">คาบทฤษฎี:</label>
+            <label className=" form-label">วัน:</label>
             <input type="text" name="theory" className="form-control" {...register("theory")}/>
           </div>
           <div className=" col-12">
-            <label className=" form-label">คาบทฤษฎี:</label>
-            <input type="text" name="carry" className="form-control" {...register("carry")}/>
+            <label className=" form-label">เวลา:</label>
+            <input type="time" name="carry" className="form-control" {...register("carry")}/>
           </div>
 
           <div className=" col-12">
-            <label className=" form-label">ห้องเรียน:</label>
-            <input type="text" name="class1" className="form-control" {...register("class1")}/>
+            <label className=" form-label">ถึงเวลา:</label>
+            <input type="time" name="class1" className="form-control" {...register("class1")}/>
           </div>
+         
+     <h2 className="mt-3">คาบปฏิบัติ</h2>
+     <div className=" col-12">
+            <label className=" form-label">วัน:</label>
+            <input type="text" name="theory" className="form-control" {...register("theory1")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">เวลา:</label>
+            <input type="time" name="carry" className="form-control" {...register("carry1")}/>
+          </div>
+
+          <div className=" col-12">
+            <label className=" form-label">ถึงเวลา:</label>
+            <input type="time" name="class1" className="form-control" {...register("class2")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">ห้องเรียน:</label>
+            <input type="text" name="class3" className="form-control" {...register("class3")}/>
+          </div>
+          <h2 className="mt-3">ผู้ขอเปิด</h2>
           <div className=" col-12">
             <label className=" form-label">เบอร์โทร:</label>
             <input type="text" name="number" className="form-control" {...register("number")}/>

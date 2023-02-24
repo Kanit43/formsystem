@@ -12,6 +12,7 @@ const Form7 = () => {
       console.log(error);
     }
   };
+
   return (
     <div className="container">
       <div className="row">
@@ -21,6 +22,12 @@ const Form7 = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className=" row g-3">
         <div className=" col-12">
+          
+          <label className=" form-label">สาขาวิชา: </label>
+          <input type="text" name="major" className="form-control" {...register("major")}/>
+        </div>
+        <div className=" col-12">
+          
             <label className=" form-label">ที่: </label>
             <input type="text" name="where" className="form-control" {...register("where")}/>
           </div>
@@ -28,16 +35,8 @@ const Form7 = () => {
             <label className=" form-label">วันที่: </label>
             <input type="date" name="date" className="form-control" {...register("date")}/>
           </div>
-
-    
-
-         <div className=" col-12">
-            <label className=" form-label">คำนำหน้า: </label>
-            <input type="text" name="title" className="form-control" {...register("title")}/>
-          </div>
-
           <div className=" col-12">
-            <label className=" form-label">ชื่อและนามสกุล: </label>
+            <label className=" form-label">ชื่อคำนำหน้าและนามสกุล: </label>
             <input type="text" name="name" className="form-control" {...register("name")}/>
           </div>
           <div className=" col-12">
@@ -47,6 +46,10 @@ const Form7 = () => {
           <div className=" col-12">
             <label className=" form-label">ในรายวิชา:</label>
             <input type="text" name="subject" className="form-control" {...register("subject")}/>
+          </div>
+          <div className=" col-12">
+            <label className=" form-label">ชื่อวิชา:</label>
+            <input type="text" name="subject1" className="form-control" {...register("subject1")}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ภาคการศึกษาที่:</label>
