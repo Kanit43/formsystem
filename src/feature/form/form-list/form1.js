@@ -7,7 +7,7 @@ const Form1 = () => {
 
   const onSubmit = async (data) => {
     try {
-      modifyDoc(1, data)
+      modifyDoc(1, data);
     } catch (error) {
       console.log(error);
     }
@@ -23,39 +23,83 @@ const Form1 = () => {
         <div className=" row g-3">
           <div className=" col-12">
             <label className=" form-label">วันที่: </label>
-            <input type="date" name="date" className="form-control" {...register("date")} />
+            <input
+              type="date"
+              name="date"
+              className="form-control"
+              {...register("date")}
+            />
           </div>
           <div className=" col-12">
             <label className=" form-label">เรื่อง: </label>
-            <input type="text" name="header" className="form-control" {...register("header")} />
+            <input
+              type="text"
+              name="header"
+              className="form-control"
+              {...register("header")}
+            />
           </div>
           <div className=" col-12">
-            <label className=" form-label">คำนำหน้า: </label>
-            <input type="text" name="title" className="form-control" {...register("title")} />
+          <label className=" form-label">คำนำหน้า: </label>
+            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title")}>
+              <option value="mr.">นาย</option>
+              <option value="ms.">นาง</option>
+              <option value="miss">นางสาว</option>
+            </select>
           </div>
           <div className=" col-12">
             <label className=" form-label">ชื่อและนามสกุล: </label>
-            <input type="text" name="name" className="form-control" {...register("name")} />
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              {...register("name")}
+            />
           </div>
           <div className=" col-12">
             <label className=" form-label">หรัสนักศึกษา:</label>
-            <input type="text" name="idcard" className="form-control" {...register("idcard")} />
+            <input
+              type="text"
+              name="idcard"
+              className="form-control"
+              {...register("idcard")}
+            />
           </div>
           <div className=" col-12">
             <label className=" form-label">ระดับ:</label>
-            <input type="text" name="level" className="form-control" {...register("level")} />
+            <input
+              type="text"
+              name="level"
+              className="form-control"
+              {...register("level")}
+            />
           </div>
           <div className=" col-12">
             <label className=" form-label">โปรแกรมวิชา:</label>
-            <input type="text" name="major" className="form-control" {...register("major")} />
+            <input
+              type="text"
+              name="major"
+              className="form-control"
+              {...register("major")}
+            />
           </div>
           <div className=" col-12">
             <label className=" form-label">ห้อง:</label>
-            <input type="text" name="class" className="form-control" {...register("class")} />
+            <input
+              type="text"
+              name="class"
+              className="form-control"
+              {...register("class")}
+            />
           </div>
           <div className=" col-12">
             <label className=" form-label">ความประสงค์:</label>
-            <input type="text" name="purpose" className="form-control"  {...register("purpose")}/>
+            <input
+              type="text"
+              name="purpose"
+              className="form-control"
+              {...register("purpose")}
+            />
           </div>
         </div>
         <div></div>
