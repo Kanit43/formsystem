@@ -37,9 +37,13 @@ const Form2 = () => {
             <input type="text" name="header" className="form-control" {...register("header")}/>
           </div>
 
-         <div className=" col-12">
-            <label className=" form-label">คำนำหน้า: </label>
-            <input type="text" name="title" className="form-control" {...register("title")}/>
+          <div className=" col-12">
+          <label className=" form-label">คำนำหน้า: </label>
+            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title")}>
+              <option value="mr.">นาย</option>
+              <option value="ms.">นาง</option>
+              <option value="miss">นางสาว</option>
+            </select>
           </div>
 
           <div className=" col-12">
@@ -62,9 +66,16 @@ const Form2 = () => {
             <label className=" form-label">ระดับ:</label>
             <input type="text" name="level" className="form-control" {...register("level")}/>
           </div>
+          
+          
           <div className=" col-12">
             <label className=" form-label">ความประสงค์:</label>
-            <input type="text" name="wish" className="form-control" {...register("wish")}/>
+            <textarea
+              type="text"
+              name="purpose"
+              className="form-control"
+              {...register("purpose")}
+            />
           </div>
 
           <div className=" col-12">

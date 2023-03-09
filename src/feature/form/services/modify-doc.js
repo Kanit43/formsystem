@@ -65,7 +65,7 @@ async function modifyDoc(id, data) {
         });
       } else {
         if (b.key === "purpose" && _.isArray(b.x)) {
-          let textArr = b.text.match(/.{1,100}/g)
+          let textArr = b.text.match(/.{1,70}/g)
           console.log(textArr, textArr.length)
           console.log(b.x, b.y)
           _.map(_.range(b.x.length), (i) => {

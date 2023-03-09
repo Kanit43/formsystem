@@ -30,9 +30,13 @@ const Form4 = () => {
             <input type="text" name="pt" className="form-control" {...register("pt")}/>
           </div>
 
-         <div className=" col-12">
-            <label className=" form-label">คำนำหน้า: </label>
-            <input type="text" name="title" className="form-control" {...register("title")}/>
+          <div className=" col-12">
+          <label className=" form-label">คำนำหน้า: </label>
+            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title")}>
+              <option value="mr.">นาย</option>
+              <option value="ms.">นาง</option>
+              <option value="miss">นางสาว</option>
+            </select>
           </div>
 
           <div className=" col-12">
