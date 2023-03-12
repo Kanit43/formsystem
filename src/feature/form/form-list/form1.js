@@ -94,12 +94,10 @@ const Form1 = () => {
           </div>
           <div className=" col-12">
             <label className=" form-label">ความประสงค์:</label>
-            <input
-              type="text"
+            <textarea type="text"
               name="purpose"
               className="form-control"
-              {...register("purpose")}
-            />
+              {...register("purpose")} rows="3"></textarea>
           </div>
         </div>
         <div></div>
