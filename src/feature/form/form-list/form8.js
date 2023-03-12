@@ -106,10 +106,7 @@ const Form8 = () => {
             <input type="text" name="class3" className="form-control" {...register("class3")}/>
           </div>
           <h2 className="mt-3">ผู้ขอเปิด</h2>
-          <div className=" col-12">
-            <label className=" form-label">เบอร์โทร:</label>
-            <input type="text" name="number" className="form-control" {...register("number")}/>
-          </div>
+          
           
           
         </div>

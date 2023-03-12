@@ -94,7 +94,8 @@ const Form1 = () => {
           </div>
           <div className=" col-12">
             <label className=" form-label">ความประสงค์:</label>
-            <textarea type="text"
+            <textarea
+              type="text"
               name="purpose"
               className="form-control"
               {...register("purpose")} rows="3"></textarea>
