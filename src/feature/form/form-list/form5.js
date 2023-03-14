@@ -42,7 +42,7 @@ const Form5 = () => {
             <input type="text" name="name" className="form-control" {...register("name")}/>
           </div>
           <div className=" col-12">
-            <label className=" form-label">หรัสนักศึกษา:</label>
+            <label className=" form-label">รหัสนักศึกษา:</label>
             <input type="text" name="idcard" className="form-control" {...register("idcard")}/>
           </div>
           <div className=" col-12">

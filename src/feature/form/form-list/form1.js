@@ -57,7 +57,7 @@ const Form1 = () => {
             />
           </div>
           <div className=" col-12">
-            <label className=" form-label">หรัสนักศึกษา:</label>
+            <label className=" form-label">รหัสนักศึกษา:</label>
             <input
               type="text"
               name="idcard"
