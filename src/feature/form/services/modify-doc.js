@@ -65,11 +65,9 @@ async function modifyDoc(id, data) {
         });
       } else {
         if (b.key === "purpose" && _.isArray(b.x)) {
-          let textArr = b.text.match(/.{1,70}/g)
-          console.log(textArr, textArr.length)
-          console.log(b.x, b.y)
-          _.map(_.range(b.x.length), (i) => {
-            console.log(textArr[i], b.x[i], b.y[i])
+          let textArr = b.text.match(/.{1,100}/g)
+          _.map(_.range(textArr.length), (i) => {
+            if (i <= b.x.length)
             page.drawText(textArr[i], {
               x: b.x[i],
               y: b.y[i],

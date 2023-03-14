@@ -14,18 +14,18 @@ const Signup = () => {
     console.log(data)
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
-      console.log(userCredential)
-      setCurrentUser(userCredential.user);
       await setDoc(doc(db, "users", userCredential.user.uid), {
-        studentId: data.studentId
+        studentId: data.studentId,
+        role: 1
       })
+      setCurrentUser(userCredential.user);
     } catch (error) {
       console.log(error)
     }
   }
 
   if (currentUser) {
-    return <Navigate to="/dashboard" state={{ from: location }} replace />
+    return <Navigate to="/" state={{ from: location }} replace />
   }
 
   return (

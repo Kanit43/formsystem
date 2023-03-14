@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/PrivatedRoute";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm(); 
   let location = useLocation();
   let navigate = useNavigate();
 

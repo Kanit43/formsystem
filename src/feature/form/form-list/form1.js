@@ -98,8 +98,7 @@ const Form1 = () => {
               type="text"
               name="purpose"
               className="form-control"
-              {...register("purpose")}
-            />
+              {...register("purpose")} rows="3"></textarea>
           </div>
         </div>
         <div></div>
