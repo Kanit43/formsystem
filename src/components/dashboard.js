@@ -1,24 +1,13 @@
 import React from "react";
-import { Navigate, useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useOutletContext } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { Container } from "react-bootstrap";
 
 const Dashboard = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const { user, roleUser } = useOutletContext();
   const location = useLocation();
-
-  if (loading) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
-  } else if (error) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
   
-
   const formList = [];
   for (let i = 1; i <= 8; i++) {
     formList.push(
@@ -30,8 +19,10 @@ const Dashboard = () => {
     );
   }
 
+  console.log(roleUser)
+
   return (
-    <div>
+    <Container>
       <div className="container mt-5"></div>
       <h1>Welcome {user.email}</h1>
       <p>this is the dashboard, if you can see this you're logged in.</p>
@@ -50,10 +41,7 @@ const Dashboard = () => {
       <div></div><font color="red"> form8 หมายถึง คำร้องขอเปิดรายวิชา </font>
       < font color="red">1.</font>
       <div className="row g-3 my-3">{formList}</div>
-      <button onClick={() => signOut(auth)} className="btn btn-danger">
-        Sign out
-      </button>
-    </div>
+      </Container>
   );
 };
 
