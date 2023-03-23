@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import modifyDoc from "../services/modify-doc";
+import { db } from "../../../firebase";
+import { setDoc, collection, doc, Timestamp } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
+import { useFormStore } from "../../../store";
 
 const Form1 = () => {
   const { register, handleSubmit } = useForm();
+  const { user } = useContext(AuthContext)
+  const form = useFormStore((state) => state.form);
+  const formFetch = useFormStore((state) => state.fetch);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (form.length === 0) formFetch();
+  }, []);
 
   const onSubmit = async (data) => {
     try {
-      modifyDoc(1, data);
+      // const userRef = doc(collection(db, "histories"));
+      // const formInfo = form.find((x) => (x.code = 1));
+      // await setDoc(userRef, {
+      //   form_id: formInfo.id,
+      //   user_id: user.uid,
+      //   json: JSON.stringify(data),
+      //   created_time: Timestamp.now(),
+      // });
+      // modifyDoc(formInfo.form, formInfo.json, data, 1);
+      // navigate("/history", { replace: true });
+
+      modifyDoc(null, null, data, 1);
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +65,13 @@ const Form1 = () => {
           </div>
           <div className=" col-12">
           <label className=" form-label">คำนำหน้า: </label>
-            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title")}>
+            <select
+              className="form-select"
+              defaultValue={""}
+              name="title"
+              {...register("title")}
+            >
+              <option value="" hidden>โปรดเลือกคำนำหน้า</option>
               <option value="mr.">นาย</option>
               <option value="ms.">นาง</option>
               <option value="miss">นางสาว</option>
@@ -57,7 +87,7 @@ const Form1 = () => {
             />
           </div>
           <div className=" col-12">
-            <label className=" form-label">หรัสนักศึกษา:</label>
+            <label className=" form-label">รหัสนักศึกษา:</label>
             <input
               type="text"
               name="idcard"
@@ -67,12 +97,17 @@ const Form1 = () => {
           </div>
           <div className=" col-12">
             <label className=" form-label">ระดับ:</label>
-            <input
-              type="text"
-              name="level"
-              className="form-control"
-              {...register("level")}
-            />
+            <select
+              className="form-select"
+              defaultValue={""}
+              name="degree"
+              {...register("degree")}
+            >
+              <option value="" hidden>โปรดเลือกระดับ</option>
+              <option value="c">ปวส.</option>
+              <option value="b">ปริญญาตรี</option>
+              <option value="d">ปริญญาโท</option>
+            </select>
           </div>
           <div className=" col-12">
             <label className=" form-label">โปรแกรมวิชา:</label>
@@ -101,10 +136,10 @@ const Form1 = () => {
               {...register("purpose")} rows="3"></textarea>
           </div>
         </div>
-        <div></div>
+        <div className="ms-auto">
         <button type="submit" name="enter" className="btn btn-primary mt-3">
           Save
-        </button>
+        </button></div>
       </form>
     </div>
   );

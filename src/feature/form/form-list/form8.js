@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import modifyDoc from "../services/modify-doc";
+import { db } from "../../../firebase";
+import { setDoc, collection, doc, Timestamp } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
+import { useFormStore } from "../../../store";
 
 const Form8 = () => {
+  const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
+  const form = useFormStore((state) => state.form);
+  const formFetch = useFormStore((state) => state.fetch);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (form.length === 0) formFetch();
+  }, []);
 
   const onSubmit = async (data) => {
     try {
-      modifyDoc(8, data)
+      const userRef = doc(collection(db, "histories"));
+      const formInfo = form.find((x) => (x.code = 8));
+      await setDoc(userRef, {
+        form_id: formInfo.id,
+        user_id: user.uid,
+        json: JSON.stringify(data),
+        created_time: Timestamp.now(),
+      });
+      modifyDoc(formInfo.form, formInfo.json, data);
+      navigate("/history", { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +53,7 @@ const Form8 = () => {
             <input type="text" name="name" className="form-control" {...register("name")}/>
           </div>
           <div className=" col-12">
-            <label className=" form-label">หรัสนักศึกษา:</label>
+            <label className=" form-label">รหัสนักศึกษา:</label>
             <input type="text" name="idcard" className="form-control" {...register("idcard")}/>
           </div>
           <div className=" col-12">

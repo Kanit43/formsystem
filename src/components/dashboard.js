@@ -1,36 +1,51 @@
-import React from "react";
-import { useLocation, Link, useOutletContext } from "react-router-dom";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
-import { Container } from "react-bootstrap";
+import React, { useContext, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
+import { Button, Container, Table } from "react-bootstrap";
+import { AuthContext } from "../context/AuthContext";
+import { useFormStore } from "../store";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../firebase";
+import { download } from "../feature/form/services/modify-doc";
 
 const Dashboard = () => {
-  const { user, roleUser } = useOutletContext();
-  const location = useLocation();
-  
-  const formList = [];
-  for (let i = 1; i <= 8; i++) {
-    formList.push(
-      <div key={"form" + i} className="col-sm-2">
-        <Link className="btn btn-outline-primary" to={"/form/" + i}>
-          Form{i}
-        </Link>
-      </div>
-    );
-  }
+  const { user, roleUser } = useContext(AuthContext);
+  const form = useFormStore(state => state.form)
+  const formFetch = useFormStore(state => state.fetch)
 
-  console.log(roleUser)
+  useEffect(() => {
+    if (form.length == 0) formFetch()
+  }, [])
+
+  const downloadForm = async (form, name) => {
+    const formRef = ref(storage, form)
+    const formUrl = await getDownloadURL(formRef)
+    const pdfBytes = await fetch(formUrl).then((res) =>
+    res.arrayBuffer()
+    );
+    download(pdfBytes, name + ".pdf")
+  }
 
   return (
     <Container>
-      <div className="container mt-5"></div>
-      <h1>Welcome {user.email}</h1>
-      <p>this is the dashboard, if you can see this you're logged in.</p>
-      <div>
-        <Link to="/profile">Profile</Link>
-      </div>
-      <div><a href="https://forms.gle/YfgR1ebF5Vn9dGvV8">แบบประเมินความพึงพอใจ</a></div>
-     <div> <font color="red"> *หมายเหตุ </font></div>
+      <div className="h4 mt-3">รายการฟอร์ม</div>
+      <Table responsive>
+        <thead>
+          <tr>
+            <th>Form</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {form.map(v => {
+            return v.active && <tr key={v.id}>
+              <td>{v.name}</td>
+              <td>{v.json != ""  && <Button type="button" variant="primary" size="sm" className="me-2" as={Link} to={"/form/" + v.code}>สร้างฟอร์ม</Button>}
+              <Button type="button" variant="secondary" size="sm" onClick={() => downloadForm(v.form, v.name)}>ดาวน์โหลด</Button></td>
+            </tr>
+          })}
+        </tbody>
+      </Table>
+      <div> <font color="red"> *หมายเหตุ </font></div>
       <div><font color="red"> form1 หมายถึง คำร้องทั่วไป เรียนคณบดี </font></div>
       <div></div><font color="red"> form2 หมายถึง คำร้องทั่วไป เรียนรองอธิการบดี </font>
       <div></div><font color="red"> form3 หมายถึง คำร้องขอลาพักการศึกษา-รักษาสถานภาพนักศึกษา </font>
@@ -39,8 +54,7 @@ const Dashboard = () => {
       <div></div><font color="red"> form6 หมายถึง คำร้องขอลงทะเบียนเรียนล่าช้า </font>
       <div></div> <font color="red"> form7 หมายถึง บันทึกแจ้งเปลี่ยนคะแนน I </font>
       <div></div><font color="red"> form8 หมายถึง คำร้องขอเปิดรายวิชา </font>
-      < font color="red">1.</font>
-      <div className="row g-3 my-3">{formList}</div>
+      <div><a href="https://forms.gle/YfgR1ebF5Vn9dGvV8">แบบประเมินความพึงพอใจ</a></div>
       </Container>
   );
 };

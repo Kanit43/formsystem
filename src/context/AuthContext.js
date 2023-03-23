@@ -29,6 +29,9 @@ export const AuthProvider = ({ children }) => {
     if (user && !roleUser) {
         console.log(user)
         getUserInfo()
+    } 
+    else if (!user && roleUser) {
+        setRoleUser(null)
     }
 
     return (
