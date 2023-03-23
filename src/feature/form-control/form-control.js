@@ -31,15 +31,15 @@ const FormControl = () => {
         json: "",
         form: "",
         active: true,
-        code: data.code,
+        code: data.code ?? null,
       }
-      if (data.form.length > 0) {
+      if (data.form) {
         const formFile = data.form[0]
         const formRef = ref(storage, `forms/${data.name}.pdf`)
         const uploadFormRes = await uploadBytes(formRef, formFile)
         entity.form = uploadFormRes.ref.fullPath
       }
-      if (data.json.length > 0) {
+      if (data.json) {
         const jsonFile = data.json[0]
         const jsonRef = ref(storage, `jsons/${data.name}.json`)
         const uploadjsonRes = await uploadBytes(jsonRef, jsonFile)

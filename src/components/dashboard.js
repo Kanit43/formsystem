@@ -25,6 +25,17 @@ const Dashboard = () => {
     download(pdfBytes, name + ".pdf")
   }
 
+  const formList = [];
+  for (let i = 1; i <= 8; i++) {
+    formList.push(
+      <div key={"form" + i} className="col-sm-2">
+        <Link className="btn btn-outline-primary" to={"/form/" + i}>
+          Form{i}
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <Container>
       <div className="h4 mt-3">รายการฟอร์ม</div>
@@ -45,6 +56,7 @@ const Dashboard = () => {
           })}
         </tbody>
       </Table>
+      {formList}
       <div> <font color="red"> *หมายเหตุ </font></div>
       <div><font color="red"> form1 หมายถึง คำร้องทั่วไป เรียนคณบดี </font></div>
       <div></div><font color="red"> form2 หมายถึง คำร้องทั่วไป เรียนรองอธิการบดี </font>
