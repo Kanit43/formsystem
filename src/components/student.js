@@ -21,7 +21,7 @@ const Student =()=> {
                 <a href="/">แก้ไขข้อมูลผู้ใช้</a>
               </li>
               <li className="list-group-item">
-                <a href="/movies">แบบฟอร์ม</a>
+                <a href="/form">แบบฟอร์ม</a>
               </li>
               <li className="list-group-item">
                 <a href="/admin">ประวัติทำรายการ</a>
