@@ -9,7 +9,7 @@ import { useFormStore } from "../../../store";
 
 const Form4 = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit ,formState: { errors, isSubmitted, isValid }} = useForm();
   const form = useFormStore((state) => state.form);
   const formFetch = useFormStore((state) => state.fetch);
   let navigate = useNavigate();
@@ -19,17 +19,18 @@ const Form4 = () => {
   }, []);
 
   const onSubmit = async (data) => {
-    try {
-      const userRef = doc(collection(db, "histories"));
-      const formInfo = form.find((x) => (x.code = 4));
-      await setDoc(userRef, {
-        form_id: formInfo.id,
-        user_id: user.uid,
-        json: JSON.stringify(data),
-        created_time: Timestamp.now(),
-      });
-      modifyDoc(formInfo.form, formInfo.json, data);
-      navigate("/history", { replace: true });
+    try {if (isSubmitted && !isValid) return
+      // const userRef = doc(collection(db, "histories"));
+      // const formInfo = form.find((x) => (x.code = 4));
+      // await setDoc(userRef, {
+      //   form_id: formInfo.id,
+      //   user_id: user.uid,
+      //   json: JSON.stringify(data),
+      //   created_time: Timestamp.now(),
+      // });
+      // modifyDoc(formInfo.form, formInfo.json, data);
+      // navigate("/history", { replace: true });
+      modifyDoc(null, null, data, 4);
     } catch (error) {
       console.log(error);
     }
@@ -44,17 +45,13 @@ const Form4 = () => {
         <div className=" row g-3">
         <div className=" col-12">
             <label className=" form-label">วันที่: </label>
-            <input type="date" name="date" className="form-control" {...register("date")}/>
+            <input type="date" name="date" className="form-control" {...register("date",{required: true})}/>
           </div>
 
-          <div className=" col-12">
-            <label className=" form-label">พ.ศ: </label>
-            <input type="text" name="pt" className="form-control" {...register("pt")}/>
-          </div>
 
           <div className=" col-12">
           <label className=" form-label">คำนำหน้า: </label>
-            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title")}>
+            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title",{required: true})}>
               <option value="mr.">นาย</option>
               <option value="ms.">นาง</option>
               <option value="miss">นางสาว</option>
@@ -63,87 +60,105 @@ const Form4 = () => {
 
           <div className=" col-12">
             <label className=" form-label">ชื่อและนามสกุล: </label>
-            <input type="text" name="name" className="form-control" {...register("name")}/>
+            <input type="text" name="name" className="form-control" {...register("name",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">รหัสนักศึกษา:</label>
-            <input type="text" name="idcard" className="form-control" {...register("idcard")}/>
+            <input type="text" name="idcard" className="form-control" {...register("idcard",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ระดับ:</label>
-            <input type="text" name="level" className="form-control" {...register("level")}/>
+            <select
+              className="form-select"
+              defaultValue={""}
+              name="degree"
+              {...register("degree",{required: true})}
+            >
+              <option value="" hidden>โปรดเลือกระดับ</option>
+              <option value="d">ปวส.</option>
+              <option value="b">ป.ตรี</option>
+              <option value="bt">ป.ตรีเทียบโอน</option>
+              <option value="md">ป.โท</option>
+            </select>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">สาขาวิชา:</label>
-            <input type="text" name="major" className="form-control" {...register("major")}/>
+            <input type="text" name="major" className="form-control" {...register("major",{required: true})}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">ภาค:</label>
-            <input type="text" name="sector" className="form-control" {...register("sector")}/>
+            <select
+              className="form-select"
+              defaultValue={""}
+              name="sector"
+              {...register("sector",{required: true})}
+            >
+              <option value="" hidden>โปรดเลือกคณะ</option>
+              <option value="c">คณะเกษตรศาสตร์และเทคโนโลยี</option>
+              <option value="b">คณะเทคโนโลยีการ</option>
+              
+            </select>
           </div>
           <div className=" col-12">
             <label className=" form-label">ความประสงค์ขอผ่อนผันค่าใช้จ่ายทางการศึกษา ตามเลขที่ใบเสร็จ:</label>
-            <input type="text" name="bill" className="form-control" {...register("bill")}/>
+            <input type="text" name="bill" className="form-control" {...register("bill",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ค่าบำรุงการศึกษาเหมาจ่าย จำนวน:</label>
-            <input type="text" name="educationfee" className="form-control" {...register("educationfee")}/>
+            <input type="text" name="educationfee" className="form-control" {...register("educationfee",{required: true})}/>
           </div>
           <h2 className="mt-3">อื่นๆ ระบุ</h2>
           <div className=" col-12">
             <label className=" form-label">1:</label>
-            <input type="text" name="other" className="form-control" {...register("other")}/>
+            <input type="text" name="other" className="form-control" {...register("other",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">จำนวน:</label>
-            <input type="text" name="unit" className="form-control" {...register("unit")}/>
+            <input type="text" name="unit" className="form-control" {...register("unit",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">2:</label>
-            <input type="text" name="other1" className="form-control" {...register("other1")}/>
+            <input type="text" name="other1" className="form-control" {...register("other1",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">จำนวน:</label>
-            <input type="text" name="unit1" className="form-control" {...register("unit1")}/>
+            <input type="text" name="unit1" className="form-control" {...register("unit1",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">รวมเป็นเงินทั้งสิ้น:</label>
-            <input type="text" name="average" className="form-control" {...register("average")}/>
+            <input type="text" name="average" className="form-control" {...register("average",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">จะชำระภายในวันที่:</label>
-            <input type="text" name="month" className="form-control" {...register("month")}/>
+            <input type="text" name="month" className="form-control" {...register("month",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">เบอร์:</label>
-            <input type="text" name="number2" className="form-control" {...register("number2")}/>
+            <input type="text" name="number2" className="form-control" {...register("number2",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ชื่อผู้ปกครอง:</label>
-            <input type="text" name="parent" className="form-control" {...register("parent")}/>
+            <input type="text" name="parent" className="form-control" {...register("parent",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">อยู่บ้านเลขที่:</label>
-            <input type="text" name="address" className="form-control" {...register("address")}/>
+            <input type="text" name="address" className="form-control" {...register("address",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ชื่อนักศึกษา:</label>
-            <input type="text" name="student" className="form-control" {...register("student")}/>
+            <input type="text" name="student" className="form-control" {...register("student",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">เกี่ยวข้องเป็น:</label>
-            <input type="text" name="parent1" className="form-control" {...register("parent1")}/>
+            <input type="text" name="parent1" className="form-control" {...register("parent1",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">เบอร์ผู้ปกครอง:</label>
-            <input type="text" name="nump" className="form-control" {...register("nump")}/>
+            <input type="text" name="nump" className="form-control" {...register("nump",{required: true})}/>
           </div>
-          <div className=" col-12">
-            <label className=" form-label">วันที่:</label>
-            <input type="text" name="date1" className="form-control" {...register("date1")}/>
-          </div>
+         
 
 
           

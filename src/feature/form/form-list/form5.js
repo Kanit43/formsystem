@@ -9,7 +9,7 @@ import { useFormStore } from "../../../store";
 
 const Form5 = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit ,formState: { errors, isSubmitted, isValid }} = useForm();
   const form = useFormStore((state) => state.form);
   const formFetch = useFormStore((state) => state.fetch);
   let navigate = useNavigate();
@@ -19,17 +19,18 @@ const Form5 = () => {
   }, []);
 
   const onSubmit = async (data) => {
-    try {
-      const userRef = doc(collection(db, "histories"));
-      const formInfo = form.find((x) => (x.code = 5));
-      await setDoc(userRef, {
-        form_id: formInfo.id,
-        user_id: user.uid,
-        json: JSON.stringify(data),
-        created_time: Timestamp.now(),
-      });
-      modifyDoc(formInfo.form, formInfo.json, data);
-      navigate("/history", { replace: true });
+    try {if (isSubmitted && !isValid) return
+      // const userRef = doc(collection(db, "histories"));
+      // const formInfo = form.find((x) => (x.code = 5));
+      // await setDoc(userRef, {
+      //   form_id: formInfo.id,
+      //   user_id: user.uid,
+      //   json: JSON.stringify(data),
+      //   created_time: Timestamp.now(),
+      // });
+      // modifyDoc(formInfo.form, formInfo.json, data);
+      // navigate("/history", { replace: true });
+      modifyDoc(null, null, data, 5);
     } catch (error) {
       console.log(error);
     }
@@ -44,14 +45,14 @@ const Form5 = () => {
         <div className=" row g-3">
         <div className=" col-12">
             <label className=" form-label">วันที่: </label>
-            <input type="date" name="date" className="form-control" {...register("date")}/>
+            <input type="date" name="date" className="form-control" {...register("date",{required: true})}/>
           </div>
 
     
 
           <div className=" col-12">
           <label className=" form-label">คำนำหน้า: </label>
-            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title")}>
+            <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title",{required: true})}>
               <option value="mr.">นาย</option>
               <option value="ms.">นาง</option>
               <option value="miss">นางสาว</option>
@@ -60,24 +61,35 @@ const Form5 = () => {
 
           <div className=" col-12">
             <label className=" form-label">ชื่อและนามสกุล: </label>
-            <input type="text" name="name" className="form-control" {...register("name")}/>
+            <input type="text" name="name" className="form-control" {...register("name",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">รหัสนักศึกษา:</label>
-            <input type="text" name="idcard" className="form-control" {...register("idcard")}/>
+            <input type="text" name="idcard" className="form-control" {...register("idcard",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ระดับปริญญาตรีสาขา:</label>
-            <input type="text" name="level" className="form-control" {...register("level")}/>
+            <input type="text" name="level" className="form-control" {...register("level",{required: true})}/>
           </div>
+          
           <div className=" col-12">
-            <label className=" form-label">คณะ:</label>
-            <input type="text" name="group" className="form-control" {...register("group")}/>
+            <label className=" form-label">ภาค:</label>
+            <select
+              className="form-select"
+              defaultValue={""}
+              name="group"
+              {...register("group",{required: true})}
+            >
+              <option value="" hidden>โปรดเลือกคณะ</option>
+              <option value="c">คณะเกษตรศาสตร์และเทคโนโลยี</option>
+              <option value="b">คณะเทคโนโลยีการจัดการ</option>
+              
+            </select>
           </div>
         
           <div className=" col-12">
             <label className=" form-label">ใบเสร็จเลขที่:</label>
-            <input type="text" name="wish" className="form-control" {...register("wish")}/>
+            <input type="text" name="wish" className="form-control" {...register("wish",{required: true})}/>
           </div>
           
         </div>

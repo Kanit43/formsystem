@@ -8,7 +8,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { useFormStore } from "../../../store";
 
 const Form1 = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit ,formState: { errors, isSubmitted, isValid }} = useForm();
   const { user } = useContext(AuthContext)
   const form = useFormStore((state) => state.form);
   const formFetch = useFormStore((state) => state.fetch);
@@ -19,7 +19,7 @@ const Form1 = () => {
   }, []);
 
   const onSubmit = async (data) => {
-    try {
+    try { if (isSubmitted && !isValid) return
       // const userRef = doc(collection(db, "histories"));
       // const formInfo = form.find((x) => (x.code = 1));
       // await setDoc(userRef, {
@@ -51,7 +51,7 @@ const Form1 = () => {
               type="date"
               name="date"
               className="form-control"
-              {...register("date")}
+              {...register("date",{required: true})}
             />
           </div>
           <div className=" col-12">
@@ -60,7 +60,7 @@ const Form1 = () => {
               type="text"
               name="header"
               className="form-control"
-              {...register("header")}
+              {...register("header",{required: true})}
             />
           </div>
           <div className=" col-12">
@@ -69,7 +69,7 @@ const Form1 = () => {
               className="form-select"
               defaultValue={""}
               name="title"
-              {...register("title")}
+              {...register("title",{required: true})}
             >
               <option value="" hidden>โปรดเลือกคำนำหน้า</option>
               <option value="mr.">นาย</option>
@@ -83,7 +83,7 @@ const Form1 = () => {
               type="text"
               name="name"
               className="form-control"
-              {...register("name")}
+              {...register("name",{required: true})}
             />
           </div>
           <div className=" col-12">
@@ -92,7 +92,7 @@ const Form1 = () => {
               type="text"
               name="idcard"
               className="form-control"
-              {...register("idcard")}
+              {...register("idcard",{required: true})}
             />
           </div>
           <div className=" col-12">
@@ -101,12 +101,12 @@ const Form1 = () => {
               className="form-select"
               defaultValue={""}
               name="degree"
-              {...register("degree")}
+              {...register("degree",{required: true})}
             >
               <option value="" hidden>โปรดเลือกระดับ</option>
-              <option value="c">ปวส.</option>
+              <option value="d">ปวส.</option>
               <option value="b">ปริญญาตรี</option>
-              <option value="d">ปริญญาโท</option>
+              <option value="md">ปริญญาโท</option>
             </select>
           </div>
           <div className=" col-12">
@@ -115,7 +115,7 @@ const Form1 = () => {
               type="text"
               name="major"
               className="form-control"
-              {...register("major")}
+              {...register("major",{required: true})}
             />
           </div>
           <div className=" col-12">
@@ -124,7 +124,7 @@ const Form1 = () => {
               type="text"
               name="class"
               className="form-control"
-              {...register("class")}
+              {...register("class",{required: true})}
             />
           </div>
           <div className=" col-12">
@@ -133,7 +133,7 @@ const Form1 = () => {
               type="text"
               name="purpose"
               className="form-control"
-              {...register("purpose")} rows="3"></textarea>
+              {...register("purpose",{required: true})} rows="3"></textarea>
           </div>
         </div>
         <div className="ms-auto">

@@ -9,7 +9,7 @@ import { useFormStore } from "../../../store";
 
 const Form7 = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit ,formState: { errors, isSubmitted, isValid }} = useForm();
   const form = useFormStore((state) => state.form);
   const formFetch = useFormStore((state) => state.fetch);
   let navigate = useNavigate();
@@ -19,17 +19,18 @@ const Form7 = () => {
   }, []);
 
   const onSubmit = async (data) => {
-    try {
-      const userRef = doc(collection(db, "histories"));
-      const formInfo = form.find((x) => (x.code = 7));
-      await setDoc(userRef, {
-        form_id: formInfo.id,
-        user_id: user.uid,
-        json: JSON.stringify(data),
-        created_time: Timestamp.now(),
-      });
-      modifyDoc(formInfo.form, formInfo.json, data);
-      navigate("/history", { replace: true });
+    try {if (isSubmitted && !isValid) return
+      // const userRef = doc(collection(db, "histories"));
+      // const formInfo = form.find((x) => (x.code = 7));
+      // await setDoc(userRef, {
+      //   form_id: formInfo.id,
+      //   user_id: user.uid,
+      //   json: JSON.stringify(data),
+      //   created_time: Timestamp.now(),
+      // });
+      // modifyDoc(formInfo.form, formInfo.json, data);
+      // navigate("/history", { replace: true });
+      modifyDoc(null, null, data, 7);
     } catch (error) {
       console.log(error);
     }
@@ -45,56 +46,81 @@ const Form7 = () => {
         <div className=" col-12">
           
           <label className=" form-label">สาขาวิชา: </label>
-          <input type="text" name="major" className="form-control" {...register("major")}/>
+          <input type="text" name="major" className="form-control" {...register("major",{required: true})}/>
         </div>
         <div className=" col-12">
           
             <label className=" form-label">ที่: </label>
-            <input type="text" name="where" className="form-control" {...register("where")}/>
+            <input type="text" name="where" className="form-control" {...register("where",{required: true})}/>
           </div>
         <div className=" col-12">
             <label className=" form-label">วันที่: </label>
-            <input type="date" name="date" className="form-control" {...register("date")}/>
+            <input type="date" name="date" className="form-control" {...register("date",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ชื่อคำนำหน้าและนามสกุล: </label>
-            <input type="text" name="name" className="form-control" {...register("name")}/>
+            <input type="text" name="name" className="form-control" {...register("name",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">สังกัดสาขาวิชา:</label>
-            <input type="text" name="group" className="form-control" {...register("group")}/>
+            <input type="text" name="group" className="form-control" {...register("group",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ในรายวิชา:</label>
-            <input type="text" name="subject" className="form-control" {...register("subject")}/>
+            <input type="text" name="subject" className="form-control" {...register("subject",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ชื่อวิชา:</label>
-            <input type="text" name="subject1" className="form-control" {...register("subject1")}/>
+            <input type="text" name="subject1" className="form-control" {...register("subject1",{required: true})}/>
           </div>
           <div className=" col-12">
             <label className=" form-label">ภาคการศึกษาที่:</label>
-            <input type="text" name="term" className="form-control" {...register("term")}/>
+            <input type="text" name="term" className="form-control" {...register("term",{required: true})}/>
           </div>
         
           <div className=" col-12">
             <label className=" form-label">ระดับ:</label>
-            <input type="text" name="level" className="form-control" {...register("level")}/>
+            <select
+              className="form-select"
+              defaultValue={""}
+              name="degree"
+              {...register("degree",{required: true})}
+            >
+              <option value="" hidden>โปรดเลือกระดับ</option>
+              <option value="d">ปวส.</option>
+              <option value="b">ปริญญาตรี</option>
+              <option value="md">ปริญญาโท</option>
+            </select>
+          </div>
+
+          <div className=" col-12">
+            <label className=" form-label">ระดับ:</label>
+            <select
+              className="form-select"
+              defaultValue={""}
+              name="sector"
+              {...register("sector",{required: true})}
+            >
+              <option value="" hidden>โปรดเลือกระดับ</option>
+              <option value="d">ภาคปกติ.</option>
+              <option value="b">ภาคบ่าย</option>
+              <option value="md">ภาคสมทบ</option>
+            </select>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">ระยะเวลาศึกษา:</label>
-            <input type="text" name="timestudy" className="form-control" {...register("timestudy")}/>
+            <input type="text" name="timestudy" className="form-control" {...register("timestudy",{required: true})}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">นักศึกษายื่นคำร้องและรับการวัดผลการศึกษาเพื่อเปลี่ยนระดับคะแนน ม.ส. ( I) จำนวน:</label>
-            <input type="text" name="accept" className="form-control" {...register("accept")}/>
+            <input type="text" name="accept" className="form-control" {...register("accept",{required: true})}/>
           </div>
 
           <div className=" col-12">
             <label className=" form-label">นักศึกษาไม่ได้ยื่นคำร้องหรือติดต่ออาจารย์ผู้สอนในการขอวัดผลการศึกษาจำนวน:</label>
-            <input type="text" name="reject" className="form-control" {...register("reject")}/>
+            <input type="text" name="reject" className="form-control" {...register("reject",{required: true})}/>
           </div>
           
         </div>
