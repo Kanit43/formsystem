@@ -15,8 +15,12 @@ const FormHistory = () => {
   useEffect(() => {
     if (form.length === 0) formFetch()
     if (form.length !== 0){ 
-      if (roleUser.isOfficer) historiesFetch(null)
-      else historiesFetch(user.uid)
+      if (roleUser.isOffice) {
+        historiesFetch(null)
+      }
+      else {
+        historiesFetch(user.uid)
+      }
     }
   }, [form])
 

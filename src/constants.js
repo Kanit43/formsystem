@@ -3,7 +3,3 @@ export const role = {
     office: 2, //010
     admin: 4 //100
 }
-
-export const FORM = {
-    1: "F01"
-}

@@ -8,7 +8,7 @@ import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 
 const MenuBar = () => {
-  const { user, roleUser } = useContext(AuthContext);
+  const { user, roleUser, info } = useContext(AuthContext);
   if (!roleUser || !user) return "";
   else
     return (
@@ -24,11 +24,11 @@ const MenuBar = () => {
               <Nav.Link href="https://forms.gle/YfgR1ebF5Vn9dGvV8">แบบประเมินความพึงพอใจ</Nav.Link>
           {roleUser.isAdmin && (
             <>
-              <Nav.Link>รายการผู้ใช้</Nav.Link>
+              <Nav.Link as={Link} to="/users">รายการผู้ใช้</Nav.Link>
             </>
           )}</Nav>
           <Nav>
-            <Nav.Link>{user.email}</Nav.Link>
+            <Nav.Link as={Link} to="/profile">{info.firstName} {info.lastName}</Nav.Link>
             <Nav.Link onClick={() => signOut(auth)}>ออกจากระบบ</Nav.Link>
           </Nav>
         </Container>

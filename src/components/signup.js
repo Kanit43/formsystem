@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from '../firebase';
 import { useForm } from "react-hook-form";
 import { doc, setDoc } from 'firebase/firestore';
+import { Container } from 'react-bootstrap';
 
 const Signup = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -16,6 +17,8 @@ const Signup = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       await setDoc(doc(db, "users", userCredential.user.uid), {
         studentId: data.studentId,
+        firstName: data.firstName,
+        lastName: data.lastName,
         role: 1
       })
       setCurrentUser(userCredential.user);
@@ -29,28 +32,40 @@ const Signup = () => {
   }
 
   return (
-    <div className='card'>
+    <Container>
+    <div className='card my-5'>
       <div className='card-body'>
-      <h1>Sign up</h1>
+      <h2>สมัครสมาชิก</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
-          <label htmlFor="regisEmail" className="form-label">Email address</label>
+          <label htmlFor="regisEmail" className="form-label">อีเมล์</label>
           <input type="email" name="email" className="form-control" id="regisEmail" {...register("email")} />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="regisPassword" className="form-label">Password</label>
+          <label htmlFor="regisPassword" className="form-label">รหัสผ่าน</label>
           <input type="password" name="password" className="form-control" id="regisPassword" {...register("password")} />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="regisStudentId" className="form-label">Student ID</label>
+          <label htmlFor="regisStudentId" className="form-label">ชื่อ</label>
+          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("firstName")} />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="regisStudentId" className="form-label">นามสกุล</label>
+          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("lastName")} />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="regisStudentId" className="form-label">รหัสนักศึกษา</label>
           <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("studentId")} />
         </div>
 
-        <button type='submit' className="btn btn-primary">Submit</button>
+        <button type='submit' className="btn btn-primary d-flex ms-auto">ยืนยัน</button>
       </form></div>
     </div>
+    </Container>
   )
 }
 

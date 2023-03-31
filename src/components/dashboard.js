@@ -56,9 +56,6 @@ const Dashboard = () => {
           })}
         </tbody>
       </Table>
-      {formList}
-     
-      
       </Container>
   );
 };

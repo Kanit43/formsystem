@@ -11,7 +11,7 @@ export const AuthContext = createContext({})
 export const AuthProvider = ({ children }) => {
     const [user, loading, error] = useAuthState(auth)
     const [roleUser, setRoleUser] = useState(null);
-    // let roleUser = { isOffice : false, isAdmin: false }
+    const [info, setInfo] = useState(null)
 
     const getUserInfo = async () => {
         const docSnap = await getDoc(
@@ -22,8 +22,19 @@ export const AuthProvider = ({ children }) => {
           let isOffice = (userInfo.role & role.office) === role.office;
           let isAdmin = (userInfo.role & role.admin) === role.admin;
           setRoleUser({ isOffice: isOffice, isAdmin: isAdmin });
+          setInfo(userInfo)
         }
     };
+
+    const getInfo = async () => {
+        const docSnap = await getDoc(
+            doc(db, "users", user.uid).withConverter(userInfoConverter)
+          );
+          if (docSnap.exists()) {
+            const userInfo = docSnap.data();
+            setInfo(userInfo)
+          }
+    }
 
     console.log("provide")
     if (user && !roleUser) {
@@ -35,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{user: user, roleUser: roleUser, loading: loading}}>
+        <AuthContext.Provider value={{user: user, roleUser: roleUser, info: info, loading: loading, getInfo: getInfo}}>
             {children}
         </AuthContext.Provider>
     )
