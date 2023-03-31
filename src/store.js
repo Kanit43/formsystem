@@ -3,6 +3,7 @@ import _ from "lodash"
 import { create } from "zustand"
 import { db } from "./firebase"
 import { formEntityConverter } from "./models/form-entity"
+import { userInfoConverter } from "./models/user-info"
 
 const formStore = (set) => ({
     form: [],
@@ -11,11 +12,14 @@ const formStore = (set) => ({
         if (!docSnap.empty) {
             let data = []
             docSnap.forEach(v => data.push(v.data())) 
-            set({ form: data })
+            set({ form: _.orderBy(data, "code", "asc") })
         }
     },
     updateStatus: async (id, status) => {
         await updateDoc(doc(db, "forms", id), {active: status})
+    },
+    updateForm: async (id, data) => {
+        await updateDoc(doc(db, "forms", id), data)
     }
 })
 
@@ -40,7 +44,25 @@ const historyStore = (set) => ({
                 if (index === formSnap.size - 1) set({ histories: data })
             })
         }
+        else {
+            set({histories : []})
+        }
     }
 })
 
 export const useHistoriesStore = create(historyStore)
+
+const userStore = (set) => ({
+    users: [],
+    fetch: async () => {
+        const userSnap = await getDocs(collection(db, "users").withConverter().withConverter(userInfoConverter))
+        if (!userSnap.empty) {
+            set({users: userSnap.docs.map(v => v.data())})
+        }
+    },
+    updateUser: async (id, data) => {
+        await updateDoc(doc(db, "users", id), data)
+    }
+})
+
+export const useUsersStore = create(userStore)

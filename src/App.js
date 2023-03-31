@@ -11,6 +11,7 @@ import { AuthProvider } from './context/AuthContext'
 import MenuBar from "./components/navbar";
 import FormHistory from "./feature/form-history/form-history";
 import FormControl from "./feature/form-control/form-control";
+import UserControl from "./feature/user-control/user-control";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/form/:id" element={<FormRoute />} />
           <Route exact path="/history" element={<FormHistory />} />
           <Route exact path="/forms" element={<FormControl />} />
+          <Route exact path="/users" element={<UserControl />} />
         </Route>
       </Routes></BrowserRouter>
       </AuthProvider>

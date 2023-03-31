@@ -13,24 +13,31 @@ const Form8 = () => {
   const form = useFormStore((state) => state.form);
   const formFetch = useFormStore((state) => state.fetch);
   let navigate = useNavigate();
+  let name = null
+
+  if (form.length !== 0) {
+    let f = form.find((x) => x.code === "8")
+    if (f) name = f.name
+  }
 
   useEffect(() => {
     if (form.length === 0) formFetch();
   }, []);
 
   const onSubmit = async (data) => {
-    try {if (isSubmitted && !isValid) return
-      // const userRef = doc(collection(db, "histories"));
-      // const formInfo = form.find((x) => (x.code = 8));
-      // await setDoc(userRef, {
-      //   form_id: formInfo.id,
-      //   user_id: user.uid,
-      //   json: JSON.stringify(data),
-      //   created_time: Timestamp.now(),
-      // });
-      // modifyDoc(formInfo.form, formInfo.json, data);
-      // navigate("/history", { replace: true });
-      modifyDoc(null, null, data, 8);
+    try {
+      if (isSubmitted && !isValid) return
+      const userRef = doc(collection(db, "histories"));
+      const formInfo = form.find((x) => (x.code === "8"));
+      await setDoc(userRef, {
+        form_id: formInfo.id,
+        user_id: user.uid,
+        json: JSON.stringify(data),
+        created_time: Timestamp.now(),
+      });
+
+      modifyDoc(formInfo.form, formInfo.json, data);
+      navigate("/history", { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +45,7 @@ const Form8 = () => {
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mt-3">คำร้องขอเปิดรายวิชาคณะเกษตรศาสตร์และเทคโนโลยี</h1>
+        <h2 className="mt-3">{name}</h2>
         <hr className="mb=3"></hr>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
