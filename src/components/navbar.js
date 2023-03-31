@@ -21,6 +21,7 @@ const MenuBar = () => {
               <Nav.Link as={Link} to="/forms">แบบฟอร์ม</Nav.Link>
           }
               <Nav.Link as={Link} to="/history">ประวัติทำรายการ</Nav.Link>
+              <Nav.Link href="https://forms.gle/YfgR1ebF5Vn9dGvV8">แบบประเมินความพึงพอใจ</Nav.Link>
           {roleUser.isAdmin && (
             <>
               <Nav.Link as={Link} to="/users">รายการผู้ใช้</Nav.Link>

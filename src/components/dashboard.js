@@ -26,15 +26,15 @@ const Dashboard = () => {
   }
 
   const formList = [];
-  for (let i = 1; i <= 8; i++) {
-    formList.push(
-      <div key={"form" + i} className="col-sm-2">
-        <Link className="btn btn-outline-primary" to={"/form/" + i}>
-          Form{i}
-        </Link>
-      </div>
-    );
-  }
+  // for (let i = 1; i <= 8; i++) {
+  //   formList.push(
+  //     <div key={"form" + i} className="col-sm-2">
+  //       <Link className="btn btn-outline-primary" to={"/form/" + i}>
+  //         Form{i}
+  //       </Link>
+  //     </div>
+  //   );
+  // }
 
   return (
     <Container>
