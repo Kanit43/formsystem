@@ -38,7 +38,7 @@ const Form6 = () => {
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mt-3">คำร้องขอเปิดรายวิชา</h1>
+        <h1 className="mt-3">แบบฟอร์มคำร้องขอลงทะเบียนเรียนล่าช้า</h1>
         <hr className="mb=3"></hr>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
