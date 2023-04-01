@@ -39,6 +39,7 @@ const Form4 = () => {
       modifyDoc(formInfo.form, formInfo.json, data);
       
       navigate("/history", { replace: true });
+     
     } catch (error) {
       console.log(error);
     }
@@ -59,6 +60,7 @@ const Form4 = () => {
           <div className=" col-12">
           <label className=" form-label">คำนำหน้า: </label>
             <select className="form-select" placeholder="โปรดเลือกคำนำหน้า" name="title" {...register("title",{required: true})}>
+            <option value="" hidden>โปรดเลือกคำนำหน้า</option>
               <option value="mr.">นาย</option>
               <option value="ms.">นาง</option>
               <option value="miss">นางสาว</option>
@@ -90,10 +92,20 @@ const Form4 = () => {
           </div>
 
           <div className=" col-12">
-            <label className=" form-label">สาขาวิชา:</label>
-            <input type="text" name="major" className="form-control" {...register("major",{required: true})}/>
+          <label className=" form-label">สาขาวิชา: </label>
+            <select className="form-select"  name="major" {...register("major",{required: true})}>
+              <option value="" hidden>โปรดเลือกสาขา</option>
+              <option value="สาขาพืชศาสตร์สิ่งทอ,การออกแบบ">สาขาพืชศาสตร์สิ่งทอ,การออกแบบ</option>
+              <option value="สาขาสัตวศาสตร์">สาขาสัตวศาสตร์</option>
+              <option value="สาขาประมง">สาขาประมง</option>
+              <option value="สาขาเครื่องจักรกลเกษตร">สาขาเครื่องจักรกลเกษตร</option>
+              <option value="สาขาอุตสาหกรรมเกษตร">สาขาอุตสาหกรรมเกษตร</option>
+              <option value="สาขาวิศวกรรมเครื่องกล">สาขาวิศวกรรมเครื่องกล</option>
+              <option value="สาขาเทคโนโลยีไฟฟ้า">สาขาเทคโนโลยีไฟฟ้า</option>
+              <option value="สาขาเทคโนโลยีคอมพิวเตอร์">สาขาเทคโนโลยีคอมพิวเตอร์</option>
+              <option value="สาขาวิทยาศาสตร์และคณิตศาสตร์">สาขาวิทยาศาสตร์และคณิตศาสตร์</option>
+            </select>
           </div>
-
           <div className=" col-12">
             <label className=" form-label">ภาค:</label>
             <select
