@@ -1,16 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../context/PrivatedRoute";
+import { AuthContext } from "../context/AuthContext";
+import Lottie from "react-lottie";
+import FadeIn from "react-fade-in/lib/FadeIn";
+import * as loadingData from "../loading.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: loadingData.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
 
 const Login = () => {
-  const { register, handleSubmit } = useForm(); 
+  const { user, loading } = useContext(AuthContext);
+  const { register, handleSubmit } = useForm();
   let location = useLocation();
   let navigate = useNavigate();
 
   let from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    }
+  }, [user]);
 
   const onSubmit = async (data) => {
     try {
@@ -22,6 +41,15 @@ const Login = () => {
       console.log(error);
     }
   };
+
+  if (loading) {
+    console.log("loading");
+    return (
+      <FadeIn>
+        <Lottie options={defaultOptions} height={400} width={400} />
+      </FadeIn>
+    );
+  }
 
   return (
     <div className="row mt-5">
