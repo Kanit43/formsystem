@@ -69,7 +69,8 @@ const Login = () => {
             
             <span className="h5 text-primary">Log in to E-Form</span>
             <br></br>
-            <span className="">ระบบบริหารจัดการแบบฟอร์มคำร้องออนไลน์</span>
+            <br></br>
+            
             <div class="col-lg-4">
             
             </div>
