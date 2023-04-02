@@ -37,6 +37,7 @@ const Form7 = () => {
       });
       modifyDoc(formInfo.form, formInfo.json, data);
       navigate("/history", { replace: true });
+  
     } catch (error) {
       console.log(error);
     }
@@ -51,10 +52,21 @@ const Form7 = () => {
         <div className=" row g-3">
         <div className=" col-12">
           
+         <div className=" col-12">
           <label className=" form-label">สาขาวิชา: </label>
-          <input type="text" name="major" className="form-control" {...register("major",{required: true})}/>
-        </div>
-        <div className=" col-12">
+            <select className="form-select"  name="major" {...register("major",{required: true})}>
+              <option value="" hidden>โปรดเลือกสาขา</option>
+              <option value="สาขาพืชศาสตร์สิ่งทอ,การออกแบบ">สาขาพืชศาสตร์สิ่งทอ,การออกแบบ</option>
+              <option value="สาขาสัตวศาสตร์">สาขาสัตวศาสตร์</option>
+              <option value="สาขาประมง">สาขาประมง</option>
+              <option value="สาขาเครื่องจักรกลเกษตร">สาขาเครื่องจักรกลเกษตร</option>
+              <option value="สาขาอุตสาหกรรมเกษตร">สาขาอุตสาหกรรมเกษตร</option>
+              <option value="สาขาวิศวกรรมเครื่องกล">สาขาวิศวกรรมเครื่องกล</option>
+              <option value="สาขาเทคโนโลยีไฟฟ้า">สาขาเทคโนโลยีไฟฟ้า</option>
+              <option value="สาขาเทคโนโลยีคอมพิวเตอร์">สาขาเทคโนโลยีคอมพิวเตอร์</option>
+              <option value="สาขาวิทยาศาสตร์และคณิตศาสตร์">สาขาวิทยาศาสตร์และคณิตศาสตร์</option>
+            </select>
+          </div>
           
             <label className=" form-label">ที่: </label>
             <input type="text" name="where" className="form-control" {...register("where",{required: true})}/>
@@ -68,8 +80,19 @@ const Form7 = () => {
             <input type="text" name="name" className="form-control" {...register("name",{required: true})}/>
           </div>
           <div className=" col-12">
-            <label className=" form-label">สังกัดสาขาวิชา:</label>
-            <input type="text" name="group" className="form-control" {...register("group",{required: true})}/>
+          <label className=" form-label">สาขาวิชา: </label>
+            <select className="form-select"  name="group" {...register("group",{required: true})}>
+              <option value="" hidden>โปรดเลือกสาขา</option>
+              <option value="สาขาพืชศาสตร์สิ่งทอ,การออกแบบ">สาขาพืชศาสตร์สิ่งทอ,การออกแบบ</option>
+              <option value="สาขาสัตวศาสตร์">สาขาสัตวศาสตร์</option>
+              <option value="สาขาประมง">สาขาประมง</option>
+              <option value="สาขาเครื่องจักรกลเกษตร">สาขาเครื่องจักรกลเกษตร</option>
+              <option value="สาขาอุตสาหกรรมเกษตร">สาขาอุตสาหกรรมเกษตร</option>
+              <option value="สาขาวิศวกรรมเครื่องกล">สาขาวิศวกรรมเครื่องกล</option>
+              <option value="สาขาเทคโนโลยีไฟฟ้า">สาขาเทคโนโลยีไฟฟ้า</option>
+              <option value="สาขาเทคโนโลยีคอมพิวเตอร์">สาขาเทคโนโลยีคอมพิวเตอร์</option>
+              <option value="สาขาวิทยาศาสตร์และคณิตศาสตร์">สาขาวิทยาศาสตร์และคณิตศาสตร์</option>
+            </select>
           </div>
           <div className=" col-12">
             <label className=" form-label">ในรายวิชา:</label>
