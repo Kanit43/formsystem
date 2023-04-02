@@ -33,13 +33,15 @@ const Login = () => {
           <img src="/sad2.png" class="img-fluid" height={100} width={80}></img>
           <img src="/pt.jpg" class="img-fluid" height={100} width={80}></img>
           <br></br>
-          <span className="h5 text-primary"> มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน , วิทยาเขตสุรินทร์</span>
+          <span className="h5 text-warning "> มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน ,วิทยาเขตสุรินทร์</span>
           <br></br>
-          <span className="h5 text-primary"> คณะเกษตรศาสตร์และเทคโนโลยี</span>
+          <span className="h5 text-success"> คณะเกษตรศาสตร์และเทคโนโลยี</span>
           <br></br>
           <br></br>
-            <span className="h6 text-primary"> E-Form</span>
-            <h4>Log in to E-Form</h4>
+            
+            <span className="h5 text-primary">Log in to E-Form</span>
+            <br></br>
+            <span className="">ระบบบริหารจัดการแบบฟอร์มคำร้องออนไลน์</span>
             <div class="col-lg-4">
             
             </div>
