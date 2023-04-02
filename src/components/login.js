@@ -26,10 +26,23 @@ const Login = () => {
   return (
     <div className="row mt-5">
       <div className="col-sm-8 col-md-5 mx-auto">
+        
         <div className="card">
           <div className="card-body">
-            <span className="h6 text-primary">E-Form</span>
-            <h4>Log in to e-form</h4>
+          <img src="/rmuti.png" class="img-fluid" height={40} width={50}></img>
+          <img src="/sad2.png" class="img-fluid" height={100} width={80}></img>
+          <img src="/pt.jpg" class="img-fluid" height={100} width={80}></img>
+          <br></br>
+          <span className="h5 text-primary"> มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน , วิทยาเขตสุรินทร์</span>
+          <br></br>
+          <span className="h5 text-primary"> คณะเกษตรศาสตร์และเทคโนโลยี</span>
+          <br></br>
+          <br></br>
+            <span className="h6 text-primary"> E-Form</span>
+            <h4>Log in to E-Form</h4>
+            <div class="col-lg-4">
+            
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-3">
                 <label htmlFor="loginEmail" className="form-label">
@@ -55,11 +68,19 @@ const Login = () => {
               <Link className="ms-2" to="/signup">
                 Sign up
               </Link>
+             
+             
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    
+
+
+
+    
   );
 };
 
