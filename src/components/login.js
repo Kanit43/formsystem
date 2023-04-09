@@ -51,12 +51,18 @@ const Login = () => {
     );
   }
 
+ 
+  
+
   return (
+   
     <div className="row mt-5">
       <div className="col-sm-8 col-md-5 mx-auto">
-        
+      
+  
         <div className="card">
           <div className="card-body">
+         
           <img src="/rmuti.png" class="img-fluid" height={40} width={50}></img>
           <img src="/sad2.png" class="img-fluid" height={100} width={80}></img>
           <img src="/pt.jpg" class="img-fluid" height={100} width={80}></img>
@@ -66,6 +72,7 @@ const Login = () => {
           <span className="h5 text-success"> คณะเกษตรศาสตร์และเทคโนโลยี</span>
           <br></br>
           <br></br>
+          <img src="/3.png" class="img-fluid" ></img>
             
             <span className="h5 text-primary">Log in to E-Form</span>
             <br></br>
@@ -88,10 +95,14 @@ const Login = () => {
                 </label>
                 <input type="password" name="password" className="form-control" id="loginPassword" {...register("password")} />
               </div>
+
+        
               <div className="d-grid">
                 <button type="submit" className="btn btn-primary">
                   Login
                 </button>
+               
+          
               </div>
             </form>
             <div className="d-flex justify-content-center my-3 small">
@@ -99,6 +110,11 @@ const Login = () => {
               <Link className="ms-2" to="/signup">
                 Sign up
               </Link>
+              
+            
+         
+
+              
              
              
             </div>
@@ -109,6 +125,10 @@ const Login = () => {
 
     
 
+   
+
+
+  
 
 
     
