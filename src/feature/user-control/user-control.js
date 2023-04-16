@@ -119,6 +119,7 @@ const UserControl = () => {
           })}
         </tbody>
       </Table>
+      <div className="small">Role 1: student, 2: Office, 4: Admin, ex. 6: Office + Admin</div>
     </Container>
 }
 
