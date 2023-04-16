@@ -11,23 +11,23 @@ const defaultColor = rgb(31 / 255, 31 / 255, 31 / 255);
 async function modifyDoc(form, json, data, id) {
   const url = `/static/file/${id}`;
   console.log(url);
-  const existingPdfBytes = await fetch(url + ".pdf").then((res) =>
-    res.arrayBuffer()
-  );
-  const jsonArray = await fetch(url + ".json")
-    .then((res) => res.text())
-    .then((data) => JSON.parse(data));
-  // const formRef = ref(storage, form)
-  // const formUrl = await getDownloadURL(formRef)
-  // const existingPdfBytes = await fetch(formUrl).then((res) =>
+  // const existingPdfBytes = await fetch(url + ".pdf").then((res) =>
   //   res.arrayBuffer()
   // );
+  // const jsonArray = await fetch(url + ".json")
+    // .then((res) => res.text())
+    // .then((data) => JSON.parse(data));
+  const formRef = ref(storage, form)
+  const formUrl = await getDownloadURL(formRef)
+  const existingPdfBytes = await fetch(formUrl).then((res) =>
+    res.arrayBuffer()
+  );
 
-  // const jsonRef = ref(storage, json)
-  // const jsonUrl = await getDownloadURL(jsonRef)
-  // const jsonArray = await fetch(jsonUrl)
-  //   .then((res) => res.text())
-  //   .then((data) => JSON.parse(data));
+  const jsonRef = ref(storage, json)
+  const jsonUrl = await getDownloadURL(jsonRef)
+  const jsonArray = await fetch(jsonUrl)
+    .then((res) => res.text())
+    .then((data) => JSON.parse(data));
   
 
   let date = DateTime.fromISO(data["date"])

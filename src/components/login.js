@@ -67,9 +67,10 @@ const Login = () => {
           <img src="/sad2.png" class="img-fluid" height={100} width={80}></img>
           <img src="/pt.jpg" class="img-fluid" height={100} width={80}></img>
           <br></br>
-          <span className="h5 text-warning "> มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน ,วิทยาเขตสุรินทร์</span>
-          <br></br>
           <span className="h5 text-success"> คณะเกษตรศาสตร์และเทคโนโลยี</span>
+          <br></br>
+          
+          <span className="h5 text-warning "> มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน ,วิทยาเขตสุรินทร์</span>
           <br></br>
           <br></br>
           <img src="/3.png" class="img-fluid" ></img>
@@ -109,9 +110,10 @@ const Login = () => {
               Don't have an account?{" "}
               <Link className="ms-2" to="/signup">
                 Sign up
+                
               </Link>
-              
-            
+             
+           
          
 
               
