@@ -1,11 +1,9 @@
 @import "../node_modules/bootstrap/scss/functions";
 
-@import "../node_modules/bootstrap/scss/variables";
+$primary: #9b4427;
+$secondary: #77574d;
 
-$theme-colors: (
-  "primary": #9b4427,
-  "secondary": #77574d
-);
+@import "../node_modules/bootstrap/scss/variables";
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
