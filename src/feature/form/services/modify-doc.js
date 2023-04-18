@@ -9,14 +9,24 @@ const thaiYear = "๐๑๒๓๔๕๖๗๘๙";
 const defaultColor = rgb(31 / 255, 31 / 255, 31 / 255);
 
 async function modifyDoc(form, json, data, id) {
+<<<<<<< HEAD
+  const url = `/static/file/${id}`;
+  console.log(url);
+=======
   // const url = `/static/file/${id}`;
   // console.log(url);
+>>>>>>> dc20faffef09652d0504cb2ba59de76a348417cc
   // const existingPdfBytes = await fetch(url + ".pdf").then((res) =>
   //   res.arrayBuffer()
   // );
   // const jsonArray = await fetch(url + ".json")
+<<<<<<< HEAD
+    // .then((res) => res.text())
+    // .then((data) => JSON.parse(data));
+=======
   //   .then((res) => res.text())
   //   .then((data) => JSON.parse(data));
+>>>>>>> dc20faffef09652d0504cb2ba59de76a348417cc
   const formRef = ref(storage, form)
   const formUrl = await getDownloadURL(formRef)
   const existingPdfBytes = await fetch(formUrl).then((res) =>

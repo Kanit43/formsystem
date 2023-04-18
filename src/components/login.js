@@ -105,6 +105,7 @@ const Login = () => {
               Don't have an account?{" "}
               <Link className="ms-2" to="/signup">
                 Sign up
+                
               </Link>
             </div>
           </div>
