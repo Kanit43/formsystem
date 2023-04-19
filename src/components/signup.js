@@ -39,27 +39,27 @@ const Signup = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label htmlFor="regisEmail" className="form-label">อีเมล์</label>
-          <input type="email" name="email" className="form-control" id="regisEmail" {...register("email")} />
+          <input type="email" name="email" className="form-control" id="regisEmail" {...register("email",{register: true})} />
         </div>
 
         <div className="mb-3">
           <label htmlFor="regisPassword" className="form-label">รหัสผ่าน</label>
-          <input type="password" name="password" className="form-control" id="regisPassword" {...register("password")} />
+          <input type="password" name="password" className="form-control" id="regisPassword" {...register("password",{required: true})} />
         </div>
 
         <div className="mb-3">
           <label htmlFor="regisStudentId" className="form-label">ชื่อ</label>
-          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("firstName")} />
+          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("firstName",{required: true})} />
         </div>
 
         <div className="mb-3">
           <label htmlFor="regisStudentId" className="form-label">นามสกุล</label>
-          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("lastName")} />
+          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("lastName",{required: true})} />
         </div>
 
         <div className="mb-3">
           <label htmlFor="regisStudentId" className="form-label">รหัสนักศึกษา</label>
-          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("studentId")} />
+          <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("studentId",{required: true})} />
         </div>
 
         <button type='submit' className="btn btn-primary d-flex ms-auto">ยืนยัน</button>
