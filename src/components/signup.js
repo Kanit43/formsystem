@@ -23,6 +23,7 @@ const Signup = () => {
       })
       setCurrentUser(userCredential.user);
     } catch (error) {
+      
       console.log(error)
     }
   }
@@ -61,6 +62,8 @@ const Signup = () => {
           <label htmlFor="regisStudentId" className="form-label">รหัสนักศึกษา</label>
           <input type="text" name="studentId" className="form-control" id="regisStudentId" {...register("studentId",{required: true})} />
         </div>
+
+        
 
         <button type='submit' className="btn btn-primary d-flex ms-auto">ยืนยัน</button>
       </form></div>
