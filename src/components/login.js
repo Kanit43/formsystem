@@ -60,6 +60,7 @@ const Login = () => {
       <div className="col-sm-8 col-md-5 mx-auto">
         <div className="card">
           <div className="card-body">
+          <span className="h4 text-success">&gt;&gt;ระบบบริหารจัดการแบบฟอร์มคำร้องออนไลน์ (e-form)&lt;&lt;</span>
             <img src="/rmuti.png" className="img-fluid" height={40} width={50}></img>
             <img src="/sad2.png" className="img-fluid" height={100} width={80}></img>
             <img src="/pt.jpg" className="img-fluid" height={100} width={80}></img>
@@ -72,7 +73,6 @@ const Login = () => {
             <br></br>
             <img src="/3.png" className="img-fluid"></img>
 
-            <span className="h4 text-primary">&gt;&gt;ระบบบริหารจัดการแบบฟอร์มคำร้องออนไลน์ (e-form)&lt;&lt;</span>
             <br></br>
             <br></br>
 

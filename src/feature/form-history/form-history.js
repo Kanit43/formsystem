@@ -35,7 +35,7 @@ const FormHistory = () => {
         <Table responsive="lg">
           <thead>
             <tr>
-              <th>#</th>
+              
               <th>Student ID</th>
               <th>Form</th>
               <th>Created Time</th>
