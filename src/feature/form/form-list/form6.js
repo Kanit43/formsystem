@@ -72,6 +72,7 @@ const Form6 = () => {
           </div>
           <div className=" col-12">
             <label className=" form-label">รหัสนักศึกษา:</label>
+            <p class="text-danger">(ตัวอย่างการกรอกรหัสนักศึกษา 6322211003-3)</p>
             <input type="text" name="idcard" className="form-control" {...register("idcard",{required: true})}/>
           </div>
           <div className=" col-12">

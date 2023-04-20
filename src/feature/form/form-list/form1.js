@@ -94,6 +94,7 @@ const Form1 = () => {
           </div>
           <div className=" col-12">
             <label className=" form-label">รหัสนักศึกษา:</label>
+            <p class="text-danger">(ตัวอย่างการกรอกรหัสนักศึกษา 6322211003-3)</p>
             <input
               type="text"
               name="idcard"
@@ -116,13 +117,19 @@ const Form1 = () => {
             </select>
           </div>
           <div className=" col-12">
-            <label className=" form-label">โปรแกรมวิชา:</label>
-            <input
-              type="text"
-              name="major"
-              className="form-control"
-              {...register("major",{required: true})}
-            />
+          <label className=" form-label">สาขาวิชา: </label>
+            <select className="form-select"  name="major" {...register("major",{required: true})}>
+              <option value="" hidden>โปรดเลือกสาขา</option>
+              <option value="สาขาพืชศาสตร์สิ่งทอ,การออกแบบ">สาขาพืชศาสตร์สิ่งทอ,การออกแบบ</option>
+              <option value="สาขาสัตวศาสตร์">สาขาสัตว์ศาสตร์</option>
+              <option value="สาขาประมง">สาขาประมง</option>
+              <option value="สาขาเครื่องจักรกลเกษตร">สาขาเครื่องจักรกลเกษตร</option>
+              <option value="สาขาอุตสาหกรรมเกษตร">สาขาอุตสาหกรรมเกษตร</option>
+              <option value="สาขาวิศวกรรมเครื่องกล">สาขาวิศวกรรมเครื่องกล</option>
+              <option value="สาขาเทคโนโลยีไฟฟ้า">สาขาเทคโนโลยีไฟฟ้า</option>
+              <option value="สาขาเทคโนโลยีคอมพิวเตอร์">สาขาเทคโนโลยีคอมพิวเตอร์</option>
+              <option value="สาขาวิทยาศาสตร์และคณิตศาสตร์">สาขาวิทยาศาสตร์และคณิตศาสตร์</option>
+            </select>
           </div>
           <div className=" col-12">
             <label className=" form-label">ห้อง:</label>

@@ -57,7 +57,7 @@ const Form7 = () => {
             <select className="form-select"  name="major" {...register("major",{required: true})}>
               <option value="" hidden>โปรดเลือกสาขา</option>
               <option value="สาขาพืชศาสตร์สิ่งทอ,การออกแบบ">สาขาพืชศาสตร์สิ่งทอ,การออกแบบ</option>
-              <option value="สาขาสัตวศาสตร์">สาขาสัตวศาสตร์</option>
+              <option value="สาขาสัตวศาสตร์">สาขาสัตว์ศาสตร์</option>
               <option value="สาขาประมง">สาขาประมง</option>
               <option value="สาขาเครื่องจักรกลเกษตร">สาขาเครื่องจักรกลเกษตร</option>
               <option value="สาขาอุตสาหกรรมเกษตร">สาขาอุตสาหกรรมเกษตร</option>

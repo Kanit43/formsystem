@@ -46,7 +46,7 @@ const FormHistory = () => {
             {histories.map((element) => {
               let formInfo = form.find((v) => v.id === element.formId)
               return <tr key={element.id}>
-              <td>{element.id}</td>
+             
               <td>{element.studentId}</td>
               <td className="text-nowrap">{formInfo.name}</td>
               <td className="text-nowrap">{element.createdTime}</td>

@@ -99,6 +99,7 @@ const Form3 = () => {
           </div>
           <div className=" col-12">
             <label className=" form-label">รหัสนักศึกษา:</label>
+            <p class="text-danger">(ตัวอย่างการกรอกรหัสนักศึกษา 6322211003-3)</p>
             <input
               type="text"
               name="idcard"
@@ -138,7 +139,7 @@ const Form3 = () => {
             <select className="form-select"  name="major1" {...register("major1",{required: true})}>
               <option value="" hidden>โปรดเลือกสาขา</option>
               <option value="สาขาพืชศาสตร์สิ่งทอ,การออกแบบ">สาขาพืชศาสตร์สิ่งทอ,การออกแบบ</option>
-              <option value="สาขาสัตวศาสตร์">สาขาสัตวศาสตร์</option>
+              <option value="สาขาสัตวศาสตร์">สาขาสัตว์ศาสตร์</option>
               <option value="สาขาประมง">สาขาประมง</option>
               <option value="สาขาเครื่องจักรกลเกษตร">สาขาเครื่องจักรกลเกษตร</option>
               <option value="สาขาอุตสาหกรรมเกษตร">สาขาอุตสาหกรรมเกษตร</option>
